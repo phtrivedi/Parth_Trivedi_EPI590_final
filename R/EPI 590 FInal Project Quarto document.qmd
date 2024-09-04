@@ -1,0 +1,67 @@
+---
+title: "EPI 590 FInal Project"
+author: "Parth Trivedi"
+format: html
+---
+
+## Loading Necessary Packages and Reading in Data
+
+```{r}
+install.packages("here")
+library(here, gtsummary)
+
+pokemon <- read.csv(here::here("Data/Pokemon.csv"))
+
+gtsummary::tbl_summary(
+						pokemon,
+						by = "Type.1",
+						include = c(HP, Attack, Defense, Sp..Atk, Sp..Def, Speed),
+						label = list(
+												 HP = "Health Points",
+												 Sp..Atk = "Special Attack",
+												 Sp..Def = "Special Defense")
+						)
+```
+
+## Creating Table of Descriptive Statistcs
+
+```{r}
+
+```
+
+## Creating regression table of HP by Attack, Defense, Special Attack, Special Defense, and speed
+
+```{r}
+tbl_uvregression(
+								 pokemon,
+								 y = HP,
+								 include = c(HP, Attack, Defense, Sp..Atk, Sp..Def, Speed),
+								 label = list(
+														 	HP = "Health Points",
+														 	Sp..Atk = "Special Attack",
+														 	Sp..Def = "Special Defense"),
+								 method = lm
+								 )
+```
+
+## Creating a Histogram for HP of all Pokemon in the dataset
+
+```{r}
+hist(pokemon$HP)
+```
+
+## Creating a Histogram for HP of all Pokemon in the dataset
+
+```{r}
+hist(pokemon$HP)
+```
+
+## Creating function to return mean value for continuous variables
+
+```{r}
+variable_mean <- function(x){
+							val = sum(x)/length(x)		
+							return(val)
+							}
+variable_mean(pokemon$Attack)
+```
