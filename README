@@ -5,4 +5,4 @@ The data used for this project was retrieved from Kaggle. It is a Pokemon data s
 Notes:
 	- The Pokemon.csv dataset is required for the analyses in this project.
 	- The chunks in the Quarto document should run and render as long as the "here" and "gtsummary" packages are installed and loaded.
-	- All of the code necessary for the analyses and outputs can be found in the "EPI 590 Final Project Quarto document.qmd" file.
+	- All of the code necessary for the analyses and outputs can be found in the "EPI 590 Final Project Quarto document.qmd" file within the 			"R" folder.
