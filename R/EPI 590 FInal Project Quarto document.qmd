@@ -41,7 +41,7 @@ gtsummary::tbl_summary(
 
 gtsummary::inline_text(table1, variable = HP, column = Steel)
 
-table1_save <- here("Data", "EPI590_Table1")
+table1_save <- here::here("Data", "EPI590_Table1.pdf")
 ```
 
 Table describing median, first quartile, and third quartile, for health points, attack, defense, special attack, special defense, and speed stastics by type of Pokemon.
