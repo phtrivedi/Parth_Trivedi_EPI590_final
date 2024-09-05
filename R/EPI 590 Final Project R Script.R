@@ -14,7 +14,7 @@ tbl_summary(
 												 Sp..Def = "Special Defense")
 						)
 
-#Creating regression table
+#Creating regression table of HP by Attack, Defense, Special Attack, Special Defense, and speed
 tbl_uvregression(
 								 pokemon,
 								 y = HP,
@@ -26,6 +26,13 @@ tbl_uvregression(
 								 method = lm
 								 )
 
-#Creating a histogram
+#Creating a histogram for HP of all Pokemon in the dataset
 hist(pokemon$HP)
+
+#Creating function to return mean value for continuous variables
+variable_mean <- function(x){
+							val = sum(x)/length(x)
+							return(val)
+							}
+variable_mean(pokemon$Attack)
 

@@ -1,18 +1,23 @@
 ---
-title: "EPI 590 FInal Project"
+title: "EPI 590 Final Project"
 author: "Parth Trivedi"
 format: html
+echo: True
+error: True
 ---
 
 ## Loading Necessary Packages and Reading in Data
 
 ```{r}
-install.packages("here")
 library(here, gtsummary)
 
 pokemon <- read.csv(here::here("Data/Pokemon.csv"))
+```
 
-gtsummary::tbl_summary(
+## Creating Table of Descriptive Statistcs
+
+```{r}
+table1 <- gtsummary::tbl_summary(
 						pokemon,
 						by = "Type.1",
 						include = c(HP, Attack, Defense, Sp..Atk, Sp..Def, Speed),
@@ -21,18 +26,18 @@ gtsummary::tbl_summary(
 												 Sp..Atk = "Special Attack",
 												 Sp..Def = "Special Defense")
 						)
+print(table1)
+gtsummary::inline_text(table1, variable = HP, column = Steel)
 ```
 
-## Creating Table of Descriptive Statistcs
+Table describing median, first quartile, and third quartile, for health points, attack, defense, special attack, special defense, and speed stastics by type of Pokemon.
 
-```{r}
-
-```
+The median, first quartile, and 3rd quartile for Health Points for Bug type Pokemon are `r gtsummary::inline_text(table1, variable = HP, column = Bug)`
 
 ## Creating regression table of HP by Attack, Defense, Special Attack, Special Defense, and speed
 
 ```{r}
-tbl_uvregression(
+gtsummary::tbl_uvregression(
 								 pokemon,
 								 y = HP,
 								 include = c(HP, Attack, Defense, Sp..Atk, Sp..Def, Speed),
@@ -44,17 +49,15 @@ tbl_uvregression(
 								 )
 ```
 
-## Creating a Histogram for HP of all Pokemon in the dataset
-
-```{r}
-hist(pokemon$HP)
-```
+Univariate regression table depicting number, Beta statistic, 95% CI, and p-value for Health Points
 
 ## Creating a Histogram for HP of all Pokemon in the dataset
 
 ```{r}
 hist(pokemon$HP)
 ```
+
+Histogram depicting the frequency of specific Health Point ranges for all Pokemon in the dataset
 
 ## Creating function to return mean value for continuous variables
 
@@ -65,3 +68,5 @@ variable_mean <- function(x){
 							}
 variable_mean(pokemon$Attack)
 ```
+
+## 
