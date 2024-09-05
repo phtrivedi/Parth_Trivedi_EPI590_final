@@ -6,6 +6,8 @@ echo: True
 error: True
 ---
 
+The data used for this project is a Pokemon dataset which includes names, types, health points, attack, defense, special attack, special defense, speed, what generation the pokemon are from, and whether they are classified as legendary. The dataset was retrieved from Kaggle.
+
 ## Loading Necessary Packages and Reading in Data
 
 ```{r}
@@ -14,7 +16,7 @@ library(here, gtsummary)
 pokemon <- read.csv(here::here("Data/Pokemon.csv"))
 ```
 
-## Creating Table of Descriptive Statistcs
+## Creating and Saving Table of Descriptive Statistcs
 
 ```{r}
 table1 <- gtsummary::tbl_summary(
@@ -26,8 +28,20 @@ table1 <- gtsummary::tbl_summary(
 												 Sp..Atk = "Special Attack",
 												 Sp..Def = "Special Defense")
 						)
-print(table1)
+
+gtsummary::tbl_summary(
+						pokemon,
+						by = "Type.1",
+						include = c(HP, Attack, Defense, Sp..Atk, Sp..Def, Speed),
+						label = list(
+												 HP = "Health Points",
+												 Sp..Atk = "Special Attack",
+												 Sp..Def = "Special Defense")
+						)
+
 gtsummary::inline_text(table1, variable = HP, column = Steel)
+
+table1_save <- here("Data", "EPI590_Table1")
 ```
 
 Table describing median, first quartile, and third quartile, for health points, attack, defense, special attack, special defense, and speed stastics by type of Pokemon.

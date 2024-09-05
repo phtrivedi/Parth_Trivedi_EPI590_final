@@ -1,0 +1,7 @@
+Data overview:
+
+The data used for this project was retrieved from Kaggle. It is a Pokemon data set which includes the names, generation, legendary status and the following statistics for each Pokemon in the dataset: health points, attack, defense, special attack, special defense, and speed.
+
+Notes:
+	- The Pokemon.csv dataset is required for the analyses in this project.
+	- The chunks in the Quarto document should run and render as long as the "here" and "gtsummary" packages are installed and loaded.
